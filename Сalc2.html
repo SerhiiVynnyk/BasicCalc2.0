@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Калькулятор</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="stylee.css">
+	
+</head>
+<body id= "whereToBe">
+	<div class="calc-wrap" id="mainDiv">
+		<input type="text" id="lname" name="lname" class="area">
+			
+		</textarea>
+
+		<div class="butnField">
+			
+			<input type="button" class="btn" value="DEL" onclick="delOne()">
+			<input type="button" class="btn" value="AC" onclick="cleart()">
+			<input type="button" class="btn" value="1" onclick="toInput()">
+			<input type="button" class="btn" value="2" onclick="toInput()">
+			<input type="button" class="btn" value="3" onclick="toInput()">
+			<input type="button" class="btn" value="/" onclick="toInput()">
+			<input type="button" class="btn" value="4" onclick="toInput()">
+			<input type="button" class="btn" value="5" onclick="toInput()">
+			<input type="button" class="btn" value="6" onclick="toInput()">
+			<input type="button" class="btn" value="*" onclick="toInput()">
+			<input type="button" class="btn" value="7" onclick="toInput()">
+			<input type="button" class="btn" value="8" onclick="toInput()">
+			<input type="button" class="btn" value="9" onclick="toInput()">
+			<input type="button" class="btn" value="+" onclick="toInput()">
+			<input type="button" class="btn" value="-" onclick="toInput()">
+			<input type="button" class="btn" value="=" onclick="count()">
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+   
+function toInput() {
+	// body...
+	var butValue = event.target.value;
+	var inputValue = document.getElementById("lname").value;
+	inputValue += butValue;
+	 document.getElementById("lname").value = inputValue;
+}
+
+function count() {
+var toCount = eval(document.getElementById("lname").value);
+document.getElementById("lname").value = toCount;
+}
+function delOne() {
+	// body...
+var newOne = document.getElementById("lname").value.slice(0,-1);
+document.getElementById("lname").value = newOne;
+}
+
+function cleart() {
+	// body...
+	document.getElementById("lname").value = "0";
+
+}
+
+var elem = document.getElementById("mainDiv");
+
+
+
+
+
+elem.onmousedown = function(event) {
+	 elem.style.zIndex = 1000;
+	 
+	document.onmousemove = function (e) {
+	    var x = e.clientX,
+	     y = e.clientY;
+
+	    var elemLeft = elem.offsetLeft;
+	    var elemTop = elem.offsetTop;
+
+
+	    elem.style.top = (y - elemTop) + 'px';
+	    elem.style.left = (x - elemLeft) + 'px';
+	}
+
+	 document.onmouseup = function(e) {
+		document.onmouseup = null;
+    	document.onmousemove = null;
+  	}
+
+  	elem.ondragstart = function() {
+  		return false;
+  	}
+}
+
+
+
+	</script>
+
+</body>
+</html>
+
+
